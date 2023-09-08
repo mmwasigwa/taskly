@@ -1,43 +1,54 @@
 #!/usr/bin/env python
+# taskly.py
 
 import click
 from colorama import Fore, Style
-import time
+from models import Category, Task, session
 
-# Our dictionary to store task timers
-task_timers = {}
-
-@click.command()
+@click.group()
 def taskly():
     """Welcome to Taskly - Your Task Manager with in-built Timer"""
     click.echo(Fore.GREEN + "Taskly - Your Task Manager with in-built Timer")
     click.echo(Style.RESET_ALL)
 
+@taskly.command()
+@click.argument("category_name")
+def add_category(category_name):
+    """Add a new category"""
+    category = Category(name=category_name)
+    session.add(category)
+    session.commit()
+    click.echo(Fore.CYAN + f"Added category: {category_name}")
+    click.echo(Style.RESET_ALL)
 
-@click.argument("task_name")
-def add(task_name):
+@taskly.command()
+@click.argument("task_title")
+@click.argument("category_name")
+def add_task(task_title, category_name):
     """Add a new task"""
-    # Implement task addition logic here
-    click.echo(f"Added task: {task_name}")
-
-def show():
-    """List all tasks"""
-    # Implement task listing logic here
-    click.echo("List of tasks:")
-
-# Timer
-
-
-@click.argument("task_name")
-def stop(task_name):
-    """Stop a task timer"""
-    if task_name in task_timers:
-        elapsed_time = time.time() - task_timers[task_name]
-        click.echo(f"Stopped timer for task: {task_name}")
-        click.echo(f"Elapsed time: {elapsed_time:.2f} seconds")
-        del task_timers[task_name]
+    category = session.query(Category).filter_by(name=category_name).first()
+    if category:
+        task = Task(title=task_title, category=category)
+        session.add(task)
+        session.commit()
+        click.echo(Fore.CYAN + f"Added task: {task_title}")
+        click.echo(Style.RESET_ALL)
     else:
-        click.echo(f"Task '{task_name}' timer is not running.")
+        click.echo(Fore.RED + f"Category '{category_name}' does not exist.")
+        click.echo(Style.RESET_ALL)
+
+@taskly.command()
+def list_tasks():
+    """List all tasks"""
+    tasks = session.query(Task).all()
+    if tasks:
+        click.echo(Fore.YELLOW + "List of tasks:")
+        for task in tasks:
+            click.echo(f"{task.id}. {task.title} (Category: {task.category.name})")
+        click.echo(Style.RESET_ALL)
+    else:
+        click.echo(Fore.YELLOW + "No tasks found.")
+        click.echo(Style.RESET_ALL)
 
 if __name__ == "__main__":
     taskly()
