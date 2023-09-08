@@ -1,7 +1,5 @@
 # Taskly - CLI Project with SQL Database
 
-![Taskly Logo](cli-project-logo.png)
-
 ## Table of Contents
 
 - [Introduction](#introduction)
@@ -45,9 +43,10 @@ Before using Taskly, make sure you have the following prerequisites in place:
 git clone $ git@github.com:Mwasigwa2/taskly.git
 ```
 2. cd into the project directory:
-    ```
-  $  cd taskly
-    ```
+
+```
+$  cd taskly
+```
 3. Openwith code editor/IDE of choice:
 
 ```
