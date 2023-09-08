@@ -29,11 +29,10 @@ Before using this CLI tool, ensure you have:
 ```
 git clone $ git@github.com:Mwasigwa2/taskly.git
 ```
-
-Certainly! Here's a simplified Markdown format for your Task CLI project with an SQL database:
-
-markdown
-Copy code
+2. cd into project directory:
+    ```
+  $  cd taskly
+    ```
 # Task CLI Project with SQL Database
 
 ![CLI Project Logo](cli-project-logo.png)
