@@ -16,7 +16,10 @@
 Before using this CLI tool, ensure you have:
 
 - virtual environment set up (Recommended)
-- nenessary dependencies install
+- necessary dependencies installed
+  -*sqlalchemy*
+  -*pip*
+  
 - SQLite or your preferred SQL database
 
 ## Installation
