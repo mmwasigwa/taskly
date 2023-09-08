@@ -14,8 +14,8 @@
 ## Prerequisites
 
 Before using this CLI tool, ensure you have:
+
 - virtual environment set up (Recommended)
-- 
 - nenessary dependencies install
 - SQLite or your preferred SQL database
 
