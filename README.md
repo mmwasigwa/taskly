@@ -1,23 +1,22 @@
-# Task CLI Project with SQL Database
-
-![CLI Project Logo](cli-project-logo.png)
+# Taskly -  CLI Project with SQL Database
 
 ## Introduction
 
-This Command Line Interface (CLI) project allows you to manage tasks using an SQL database as the backend storage. Easily create, update, delete, and list tasks with this handy CLI tool.
+- This Command Line Interface (CLI) project allows you to manage tasks using an SQL database as the backend storage. 
+- Easily create, update, delete, and list tasks with this handy CLI tool.
 
 ## Features
 
 - Create, update, and delete tasks.
-- List tasks by status (completed or pending).
-- Data persistence using an SQL database.
+- Set timer and stop timer for tasks
+- Data using an SQL database.
 
 ## Prerequisites
 
 Before using this CLI tool, ensure you have:
-
-- Node.js (v14+)
-- npm (Node Package Manager)
+- virtual environment set up (Recommended)
+- 
+- nenessary dependencies install
 - SQLite or your preferred SQL database
 
 ## Installation
