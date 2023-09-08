@@ -65,7 +65,7 @@ Contributions are welcome. Report issues or submit pull requests on GitHub.
 
 ## Author Info
 
-Gathirimu Mwasigwa
+[Gathirimu Mwasigwa](https://github.com/Mwasigwa2)
 
 ## License
 This project is licensed under the MIT License. See LICENSE file* for details.
