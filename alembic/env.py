@@ -14,7 +14,7 @@ config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-from taskly.models import Base
+from taskly.models import Base  # noqa: E402
 
 # ...
 target_metadata = Base.metadata
