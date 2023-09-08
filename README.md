@@ -26,8 +26,9 @@ Before using this CLI tool, ensure you have:
 
 1. Clone this repository:
 
-   ```bash
-   git clone https://github.com/yourusername/task-cli.git
+```
+git clone $ git@github.com:Mwasigwa2/taskly.git
+```
 
 Certainly! Here's a simplified Markdown format for your Task CLI project with an SQL database:
 
