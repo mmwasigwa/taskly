@@ -96,9 +96,9 @@ Copy code
 npm run db:init
 Database Connection: The CLI tool connects to the configured database automatically.
 
-Contributing
+## Contributing
 Contributions are welcome. Report issues or submit pull requests on GitHub.
 
-License
+## License
 This project is licensed under the MIT License. See LICENSE for details.
 
