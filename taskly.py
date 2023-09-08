@@ -1,9 +1,36 @@
 #!/usr/bin/env python
-# taskly.py
 
 import click
 from colorama import Fore, Style
-from models import Category, Task, session
+from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
+from sqlalchemy.orm import sessionmaker, relationship
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()
+
+# Define the Category and Task models
+class Category(Base):
+    __tablename__ = "categories"
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String, nullable=False, unique=True)
+
+    tasks = relationship("Task", back_populates="category")
+
+class Task(Base):
+    __tablename__ = "tasks"
+
+    id = Column(Integer, primary_key=True)
+    title = Column(String, nullable=False)
+
+    category_id = Column(Integer, ForeignKey("categories.id"))
+    category = relationship("Category", back_populates="tasks")
+
+engine = create_engine("sqlite:///taskly.db")
+Base.metadata.create_all(engine)
+
+Session = sessionmaker(bind=engine)
+session = Session()
 
 @click.group()
 def taskly():
@@ -49,6 +76,37 @@ def list_tasks():
     else:
         click.echo(Fore.YELLOW + "No tasks found.")
         click.echo(Style.RESET_ALL)
+
+#edit task
+@taskly.command()
+@click.argument("task_id", type=int)
+@click.argument("new_title")
+def edit_task(task_id, new_title):
+    """Edit the title of a task"""
+    task = session.query(Task).filter_by(id=task_id).first()
+    if task:
+        task.title = new_title
+        session.commit()
+        click.echo(Fore.CYAN + f"Edited task {task_id}: {new_title}")
+        click.echo(Style.RESET_ALL)
+    else:
+        click.echo(Fore.RED + f"Task with ID {task_id} does not exist.")
+        click.echo(Style.RESET_ALL)
+# Delete tasks
+@taskly.command()
+@click.argument("task_id", type=int)
+def delete_task(task_id):
+    """Delete a task by ID"""
+    task = session.query(Task).filter_by(id=task_id).first()
+    if task:
+        session.delete(task)
+        session.commit()
+        click.echo(Fore.CYAN + f"Deleted task {task_id}")
+        click.echo(Style.RESET_ALL)
+    else:
+        click.echo(Fore.RED + f"Task with ID {task_id} does not exist.")
+        click.echo(Style.RESET_ALL)
+
 
 if __name__ == "__main__":
     taskly()
