@@ -60,7 +60,7 @@ Initialize Database:
 python3 taskly.py
 ```
 Open Database
-** command pallette > SQL Open Database **
+**command pallette > SQL Open Database**
 ## Contributing
 Contributions are welcome. Report issues or submit pull requests on GitHub.
 
