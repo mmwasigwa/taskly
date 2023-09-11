@@ -64,7 +64,7 @@ python3 taskly.py
 =======
 Open Database
 **command pallette > SQL Open Database**
->>>>>>> a8515bbf3878b4958b90529aba0c53f5bfcef032
+
 ## Contributing
 Contributions are welcome. Report issues or submit pull requests on GitHub.
 
