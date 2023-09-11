@@ -1,13 +1,14 @@
 # Taskly - CLI Project with SQL Database
-Table of Contents
-Introduction
-Features
-Prerequisites
-Installation
-Database Setup
-Contributing
-License
-Author Info
+### Table of Contents
+- Introduction
+- Features
+- Prerequisites
+- Installation
+- Database Setup
+- Contributing
+- License
+- Author Info
+  
 ## Introduction
 Taskly is a Command Line Interface (CLI) project that simplifies task management using an SQL database as the backend storage. With Taskly, you can effortlessly create, update, delete, list tasks, and even set timers for them using this handy CLI tool.
 
